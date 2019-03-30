@@ -1,6 +1,7 @@
 package pl.daftacademy.androidlevelup.view.movies
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class MoviesFragment : Fragment() {
         super.onStart()
         val genre = arguments?.getString(GENRE_EXTRA)
         adapter.items = viewModel.getMovies(genre)
+        Log.d("TEST", "ilosc studio: " + viewModel.studios.get().size.toString())
     }
 
     private fun provideViewModel() = ViewModelProviders

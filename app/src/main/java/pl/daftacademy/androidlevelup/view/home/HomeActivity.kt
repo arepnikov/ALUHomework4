@@ -2,6 +2,7 @@ package pl.daftacademy.androidlevelup.view.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -52,6 +53,11 @@ class HomeActivity : AppCompatActivity() {
         nav.menu.children.find { it.isChecked }?.isChecked = false
         item.isChecked = true
         userPrefs.startingPage = item.itemId
+
+        Log.d("TEST", "czesc")
+
+        resources.getStringArray(R.array.studios).forEach { Log.d("TEST", it) }
+
         drawer.closeDrawers()
         return true
     }
