@@ -53,11 +53,6 @@ class HomeActivity : AppCompatActivity() {
         nav.menu.children.find { it.isChecked }?.isChecked = false
         item.isChecked = true
         userPrefs.startingPage = item.itemId
-
-        Log.d("TEST", "czesc")
-
-        resources.getStringArray(R.array.studios).forEach { Log.d("TEST", it) }
-
         drawer.closeDrawers()
         return true
     }
