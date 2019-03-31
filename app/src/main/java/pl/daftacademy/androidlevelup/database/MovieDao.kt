@@ -12,4 +12,10 @@ interface MovieDao {
 
     @Query("SELECT * FROM movie")
     fun get(): List<Movie>
+
+//    @Query(
+//        "SELECT movie.*, studio.name AS studioName FROM movie" +
+//        "INNER JOIN studio ON studio.id = movie.studioId"
+//    )
+//    fun getMoviesWithStudioName(): List<MovieStudio>
 }

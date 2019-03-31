@@ -16,13 +16,18 @@ class Movie(
     val title: String,
     val year: Int,
     val genres: String,
-    val studioId: Int?) {
+    val studioId: Int) {
 
     fun toEntity() = Movie(title, year, genres.split(','), null)
 
     companion object {
-        fun fromEntity(movie: Movie): pl.daftacademy.androidlevelup.database.Movie {
-            return Movie(0, movie.title, movie.year, movie.genres.joinToString(","), null)
+        fun fromEntity(movieWithStudio: Pair<Movie, Studio>): pl.daftacademy.androidlevelup.database.Movie {
+            val (movie, studio) = movieWithStudio
+            return Movie(0, movie.title, movie.year, movie.genres.joinToString(","), studio.id)
         }
     }
 }
+
+//data class MovieStudio(var movie: pl.daftacademy.androidlevelup.database.Movie, var studioName: String) {
+//    fun toEntity() = Movie(movie.title, movie.year, movie.genres.split(','), studioName)
+//}

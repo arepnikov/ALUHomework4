@@ -35,7 +35,7 @@ class ViewModelFactory(application: Application) : ViewModelProvider.Factory {
                 MoviesViewModel(dbStudios, dbMovies, assetMovies) as T
             }
             modelClass.isAssignableFrom(AddViewModel::class.java) -> {
-                AddViewModel(dbMovies) as T
+                AddViewModel(dbMovies, dbStudios) as T
             }
             else -> throw IllegalArgumentException("Unknown view model ${modelClass.simpleName}")
         }

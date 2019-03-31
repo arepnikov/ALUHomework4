@@ -17,14 +17,14 @@ abstract class MovieDatabase : RoomDatabase() {
     companion object {
         lateinit var INSTANCE: MovieDatabase
 
-        private val IO_EXECUTOR = Executors.newSingleThreadExecutor()
-
         fun initIfNeeded(context: Context) {
             if (MovieDatabase.Companion::INSTANCE.isInitialized.not()) {
-                INSTANCE = Room.databaseBuilder(context, MovieDatabase::class.java, "movie_db")
+                INSTANCE = Room.databaseBuilder(context, MovieDatabase::class.java, "movie2_db")
                     .allowMainThreadQueries()
                     .addCallback(seedDatabaseCallback(context))
                     .build()
+
+//                context.deleteDatabase("movie_db")
             }
         }
 
@@ -33,7 +33,7 @@ abstract class MovieDatabase : RoomDatabase() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
                     val initStudios = context.resources.getStringArray(R.array.studios).map { Studio(0, it) }
-                    IO_EXECUTOR.execute { INSTANCE.studios().add(initStudios) }
+                    Executors.newSingleThreadExecutor().execute { INSTANCE.studios().add(initStudios) }
                 }
             }
         }
