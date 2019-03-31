@@ -17,5 +17,5 @@ interface StudioDao {
     fun findByName(names: Array<String>, limit: Int): List<Studio>
 
     @Query("SELECT * FROM studio WHERE studio.id = :studioId LIMIT 1")
-    fun findById(studioId: Int): Studio
+    fun findById(studioId: Int): Studio?
 }

@@ -12,7 +12,6 @@ class RoomMovies(private val studioDao: StudioDao, private val movieDao: MovieDa
     }
 
     override fun get(): List<Movie> = movieDao.get().map {
-            val st = studioDao.findById(it.studioId)
-            Movie(it.title, it.year, it.genres.split(","), st.name)
-        }
+        Movie(it.movie.title, it.movie.year, it.movie.genres.split(","), it.studios.first().name)
+    }
 }

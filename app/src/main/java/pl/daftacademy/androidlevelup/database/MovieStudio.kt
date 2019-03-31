@@ -1,3 +1,11 @@
 package pl.daftacademy.androidlevelup.database
 
-data class MovieStudio(var movieTitle: String, var studioName: String)
+import androidx.room.Embedded
+import androidx.room.Relation
+
+class MovieStudio(
+    @Embedded
+    var movie: Movie = Movie(-1, "", -1, "", -1),
+    @Relation(parentColumn = "studioId", entityColumn = "id", entity = Studio::class)
+    var studios: List<Studio> = listOf()
+)

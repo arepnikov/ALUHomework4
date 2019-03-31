@@ -1,12 +1,10 @@
 package pl.daftacademy.androidlevelup.database
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 import pl.daftacademy.androidlevelup.entity.Movie
 
 @Entity(
+    indices = [Index("studioId")],
     foreignKeys = [
         ForeignKey(entity = Studio::class, parentColumns = ["id"], childColumns = ["studioId"])
     ]
@@ -16,10 +14,7 @@ class Movie(
     val title: String,
     val year: Int,
     val genres: String,
-    val studioId: Int
-    ) {
-
-    fun toEntity() = Movie(title, year, genres.split(','), null)
+    val studioId: Int) {
 
     companion object {
         fun fromEntity(movieWithStudio: Pair<Movie, Studio>): pl.daftacademy.androidlevelup.database.Movie {
