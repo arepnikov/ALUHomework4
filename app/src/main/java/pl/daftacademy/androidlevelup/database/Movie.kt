@@ -16,7 +16,8 @@ class Movie(
     val title: String,
     val year: Int,
     val genres: String,
-    val studioId: Int) {
+    val studioId: Int
+    ) {
 
     fun toEntity() = Movie(title, year, genres.split(','), null)
 
@@ -28,6 +29,3 @@ class Movie(
     }
 }
 
-//data class MovieStudio(var movie: pl.daftacademy.androidlevelup.database.Movie, var studioName: String) {
-//    fun toEntity() = Movie(movie.title, movie.year, movie.genres.split(','), studioName)
-//}

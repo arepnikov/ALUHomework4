@@ -1,5 +1,6 @@
 package pl.daftacademy.androidlevelup.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -13,9 +14,17 @@ interface MovieDao {
     @Query("SELECT * FROM movie")
     fun get(): List<Movie>
 
+
+
 //    @Query(
-//        "SELECT movie.*, studio.name AS studioName FROM movie" +
+//        "SELECT * FROM movie" +
+//        "INNER JOIN studio ON studio.id = movie.studio_id"
+//    )
+//    fun get(): List<Movie>
+
+//    @Query(
+//        "SELECT movie.title AS movieTitle, studio.name AS studioName FROM movie" +
 //        "INNER JOIN studio ON studio.id = movie.studioId"
 //    )
-//    fun getMoviesWithStudioName(): List<MovieStudio>
+//    fun getMoviesWithStudioName(): LiveData<List<MovieStudio>>
 }

@@ -19,12 +19,12 @@ abstract class MovieDatabase : RoomDatabase() {
 
         fun initIfNeeded(context: Context) {
             if (MovieDatabase.Companion::INSTANCE.isInitialized.not()) {
-                INSTANCE = Room.databaseBuilder(context, MovieDatabase::class.java, "movie2_db")
+                INSTANCE = Room.databaseBuilder(context, MovieDatabase::class.java, "movie_db")
                     .allowMainThreadQueries()
                     .addCallback(seedDatabaseCallback(context))
                     .build()
 
-//                context.deleteDatabase("movie_db")
+//                context.deleteDatabase("movie2_db")
             }
         }
 

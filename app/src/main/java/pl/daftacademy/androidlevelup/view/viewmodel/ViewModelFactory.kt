@@ -19,7 +19,7 @@ class ViewModelFactory(application: Application) : ViewModelProvider.Factory {
 
     init {
         MovieDatabase.initIfNeeded(application)
-        dbMovies = RoomMovies(MovieDatabase.INSTANCE.movies())
+        dbMovies = RoomMovies(MovieDatabase.INSTANCE.studios(), MovieDatabase.INSTANCE.movies())
         assetMovies = AssetsMovies(application)
 
         // TODO: add index to studio.name field
