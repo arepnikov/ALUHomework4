@@ -11,7 +11,7 @@ interface StudioDao {
     fun add(studios: Collection<Studio>)
 
     @Query("SELECT * FROM studio")
-    fun get(): List<Studio>
+    fun get(): List<StudioMovies>
 
     @Query("SELECT * FROM studio WHERE studio.name in (:names) LIMIT :limit")
     fun findByName(names: Array<String>, limit: Int): List<Studio>

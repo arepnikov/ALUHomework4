@@ -11,7 +11,13 @@ class RoomMovies(private val studioDao: StudioDao, private val movieDao: MovieDa
         movieDao.add(moviesWithStudios.map(DbMovie.Companion::fromEntity))
     }
 
-    override fun get(): List<Movie> = movieDao.get().map {
-        Movie(it.movie.title, it.movie.year, it.movie.genres.split(","), it.studios.first().name)
+//    override fun get(): List<Movie> = movieDao.get().map {
+//        Movie(it.movie.title, it.movie.year, it.movie.genres.split(","), it.studios.first().name)
+//    }
+
+    override fun get(): List<Movie> = studioDao.get().flatMap { studioMovies ->
+        studioMovies.movies.map {
+            Movie(it.title, it.year, it.genres.split(","), studioMovies.studio.name)
+        }
     }
 }
