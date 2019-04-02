@@ -6,8 +6,8 @@ import pl.daftacademy.androidlevelup.database.Movie as DbMovie
 
 class RoomMovies(private val studioDao: StudioDao, private val movieDao: MovieDao) : Movies {
 
-    override fun add(moviesWithStudios: Collection<Pair<Movie, Studio>>) {
-        movieDao.add(moviesWithStudios.map(DbMovie.Companion::fromEntity))
+    override fun add(moviesWithStudiosPairs: Collection<Pair<Movie, Studio>>) {
+        movieDao.add(moviesWithStudiosPairs.map(DbMovie.Companion::fromEntity))
     }
 
     override fun get(): List<Movie> = studioDao.get().flatMap { studioMovies ->

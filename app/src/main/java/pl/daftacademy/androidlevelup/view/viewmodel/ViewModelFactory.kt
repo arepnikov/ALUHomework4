@@ -19,13 +19,9 @@ class ViewModelFactory(application: Application) : ViewModelProvider.Factory {
 
     init {
         MovieDatabase.initIfNeeded(application)
-        dbMovies = RoomMovies(MovieDatabase.INSTANCE.studios(), MovieDatabase.INSTANCE.movies())
         assetMovies = AssetsMovies(application)
-
-        // TODO: add index to studio.name field
-
-        dbStudios = RoomStudios(MovieDatabase.INSTANCE.studios())
-        dbStudios.get().forEach { Log.d("INIT studio", it.id.toString() + " " + it.name) }
+        dbMovies    = RoomMovies(MovieDatabase.INSTANCE.studios(), MovieDatabase.INSTANCE.movies())
+        dbStudios   = RoomStudios(MovieDatabase.INSTANCE.studios())
     }
 
     @Suppress("UNCHECKED_CAST")

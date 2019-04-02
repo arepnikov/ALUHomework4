@@ -23,8 +23,6 @@ abstract class MovieDatabase : RoomDatabase() {
                     .allowMainThreadQueries()
                     .addCallback(seedDatabaseCallback(context))
                     .build()
-
-//                context.deleteDatabase("movie2_db")
             }
         }
 
